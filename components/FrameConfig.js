@@ -175,7 +175,7 @@ export default function FrameConfig({ children }) {
         ))}
       </div>
 
-      <div className="md:absolute right-0 w-full md:w-1/4 h-max md:h-full py-5 md:p-10 flex flex-col gap-5">
+      <div className="md:absolute z-10 right-0 w-full md:w-1/4 h-max md:h-full py-5 md:p-10 flex flex-col gap-5">
         {effects[selection]?.settings?.map((setting, index) => (
           <div key={index} className="flex flex-col">
             <span className="font-semibold">{setting.name}</span>
