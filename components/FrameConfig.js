@@ -150,7 +150,7 @@ export default function FrameConfig({ children }) {
   ];
 
   return (
-    <div className="relative flex flex-col md:flex-row items-center justify-center w-full">
+    <div className="relative flex flex-col gap-5 md:flex-row items-center justify-center w-full">
       <div
         id="editor"
         className="w-full h-[532px] flex justify-center items-center"

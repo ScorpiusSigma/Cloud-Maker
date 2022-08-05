@@ -71,8 +71,10 @@ export default function AdjustSquare(props) {
     const editor = document.getElementById("editor");
     const editorWidth = editor.offsetWidth;
     const editorHeight = editor.offsetHeight;
-    const height = signY * (e.clientY - midpoint[1]) * 2;
-    const width = signX * (e.clientX - midpoint[0]) * 2;
+    const height =
+      signY * ((e.clientY || e.touches[0].clientY) - midpoint[1]) * 2;
+    const width =
+      signX * ((e.clientX || e.touches[0].clientX) - midpoint[0]) * 2;
 
     if (nesw || nwse) {
       frame.style.width = (width > editorWidth ? editorWidth : width) + "px";
@@ -97,7 +99,7 @@ export default function AdjustSquare(props) {
     <div
       onMouseDown={handleMouseDown}
       onTouchStart={handleMouseDown}
-      className={`absolute z-20 bg-black border-2 w-[14px] h-[14px] ${cursorResizeDir()} ${cursorResizePos()}`}
+      className={`absolute z-20 bg-black border-2 w-[14px] h-[14px] ${cursorResizeDir()} ${cursorResizePos()} touch-none`}
     />
   );
 }
