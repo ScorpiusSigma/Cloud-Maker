@@ -171,8 +171,8 @@ export default function FrameConfig({ children }) {
       <>{children}</>
 
       <div className="absolute right-0 w-1/4 h-full p-10 flex flex-col gap-5">
-        {effects[selection]?.settings?.map((setting) => (
-          <div className="flex flex-col">
+        {effects[selection]?.settings?.map((setting, index) => (
+          <div key={index} className="flex flex-col">
             <span className="font-semibold">{setting.name}</span>
             {setting.component}
           </div>
