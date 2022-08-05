@@ -13,7 +13,6 @@ export default function AdjustSquare(props) {
     posLeft,
     posRight,
   } = props;
-  const [active, setActive] = useState(false);
 
   const cursorResizeDir = () => {
     if (ew) return "cursor-ew-resize";
@@ -34,14 +33,15 @@ export default function AdjustSquare(props) {
   };
 
   const handleMouseDown = (e) => {
-    setActive(true);
     addEventListener("mousemove", handleMouseDrag);
+    addEventListener("touchmove", handleMouseDrag);
     addEventListener("mouseup", handleMouseUp);
+    addEventListener("touchend", handleMouseUp);
   };
 
   const handleMouseUp = (e) => {
-    setActive(false);
     removeEventListener("mousemove", handleMouseDrag);
+    removeEventListener("touchmove", handleMouseDrag);
   };
 
   const handleMouseDrag = (e) => {
@@ -96,7 +96,8 @@ export default function AdjustSquare(props) {
   return (
     <div
       onMouseDown={handleMouseDown}
-      className={`absolute z-10 bg-black border-2 w-[14px] h-[14px] ${cursorResizeDir()} ${cursorResizePos()}`}
+      onTouchStart={handleMouseDown}
+      className={`absolute z-20 bg-black border-2 w-[14px] h-[14px] ${cursorResizeDir()} ${cursorResizePos()}`}
     />
   );
 }

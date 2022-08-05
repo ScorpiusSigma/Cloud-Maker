@@ -75,7 +75,7 @@ export default function FrameConfig({ children }) {
           name: "Resize",
           component: (
             <DropDown>
-              <option value="fill" selected>
+              <option value="fill" defaultValue>
                 Fill
               </option>
               <option value="fit">Fit</option>
@@ -94,7 +94,7 @@ export default function FrameConfig({ children }) {
               <option value="top_left">Top Left</option>
               <option value="bottom_right">Bottom Right</option>
               <option value="bottom_left">Bottom Left</option>
-              <option value="center" selected>
+              <option value="center" defaultValue>
                 Center
               </option>
             </DropDown>
@@ -136,7 +136,7 @@ export default function FrameConfig({ children }) {
               <option value="left_edge">Left edge</option>
               <option value="top_right_corner">Top right corner</option>
               <option value="top_left_corner">Top left corner</option>
-              <option value="bottom_right_corner" selected>
+              <option value="bottom_right_corner" defaultValue>
                 Bottom right corner
               </option>
               <option value="bottom_left_corner">Bottom left corner</option>
@@ -150,13 +150,20 @@ export default function FrameConfig({ children }) {
   ];
 
   return (
-    <div className="relative flex flex-row items-center justify-center w-full h-full">
-      <div className="absolute z-10 flex flex-col left-0 w-max gap-3 h-full p-10">
+    <div className="relative flex flex-col md:flex-row items-center justify-center w-full">
+      <div
+        id="editor"
+        className="w-full h-[532px] flex justify-center items-center"
+      >
+        {children}
+      </div>
+
+      <div className="md:absolute z-10 flex flex-row justify-center md:flex-col md:left-0 py-5 md:p-10 gap-3 h-max w-full md:h-full overflow-x-auto text-xs md:text-md">
         {effects.map((effect, index) => (
           <button
             key={index}
             onClick={() => setSelection(index)}
-            className={`flex flex-col relative items-center justify-center h-[108px] w-[108px] ${
+            className={`flex flex-col relative items-center justify-center w-[108px] truncate ${
               selection === index
                 ? "bg-gradient-to-b from-blue-500 to-blue-800"
                 : "border-2"
@@ -168,9 +175,7 @@ export default function FrameConfig({ children }) {
         ))}
       </div>
 
-      <>{children}</>
-
-      <div className="absolute right-0 w-1/4 h-full p-10 flex flex-col gap-5">
+      <div className="md:absolute right-0 w-full md:w-1/4 h-max md:h-full py-5 md:p-10 flex flex-col gap-5">
         {effects[selection]?.settings?.map((setting, index) => (
           <div key={index} className="flex flex-col">
             <span className="font-semibold">{setting.name}</span>
