@@ -96,7 +96,7 @@ export default function AdjustSquare(props) {
   return (
     <div
       onMouseDown={handleMouseDown}
-      className={`absolute bg-black border-2 w-[14px] h-[14px] ${cursorResizeDir()} ${cursorResizePos()}`}
+      className={`absolute z-10 bg-black border-2 w-[14px] h-[14px] ${cursorResizeDir()} ${cursorResizePos()}`}
     />
   );
 }

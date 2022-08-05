@@ -20,12 +20,15 @@ export default function Frame() {
   }, []);
 
   return (
-    <div id="frame" className="relative border w-full h-full select-none">
+    <div
+      id="frame"
+      className="relative border border-gray-800 w-full h-full select-none"
+    >
       <div className="absolute w-full h-full overflow-hidden">
-        {/* <img src="/imgProxy.jpg" className="w-full" /> */}
-        <div className="flex justify-center items-center w-full h-full">
+        <img src="/imgProxy.jpg" className="w-full" />
+        {/* <div className="flex justify-center items-center w-full h-full">
           {frameDimension[0] + " X " + frameDimension[1]}
-        </div>
+        </div> */}
       </div>
 
       <AdjustSquare nwse posTop posLeft />
