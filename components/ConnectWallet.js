@@ -20,7 +20,7 @@ const ConnectWallet = ({ children }) => {
   return (
     <button
       onClick={connectWalletSol}
-      className="uppercase bg-[#E9AE0B] rounded-full px-10 py-8 text-6xl active:bg-[#a47c0f]"
+      className="uppercase bg-[#E9AE0B] rounded-full px-5 py-4 md:px-10 md:py-8 text-2xl xl:text-6xl active:bg-[#a47c0f]"
     >
       {children}
     </button>
