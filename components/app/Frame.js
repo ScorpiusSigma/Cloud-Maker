@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AppContext } from "../context/AppContext";
 import AdjustSquare from "./AdjustSquares";
 
 export default function Frame() {
-  const [frameDimension, setFrameDimension] = useState([]);
+  const { effect } = useContext(AppContext);
 
   useEffect(() => {
     // Get frame element
@@ -12,7 +13,6 @@ export default function Frame() {
     const observer = new ResizeObserver((entries) => {
       const e = entries[0];
       const { width, height } = e.contentRect;
-      setFrameDimension([Math.ceil(width), Math.ceil(height)]);
     });
 
     // observer frame
@@ -22,7 +22,11 @@ export default function Frame() {
   return (
     <div
       id="frame"
-      className="relative border border-gray-800 w-full h-full select-none"
+      className={"relative border border-gray-800 select-none"}
+      style={{
+        width: effect.width !== "" ? effect.width : "100%",
+        height: effect.height !== "" ? effect.height : "100%",
+      }}
     >
       <div className="absolute w-full h-full overflow-hidden">
         <img src="/imgProxy.jpg" className="w-full" />

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import ConnectWallet from "../components/connectWallet";
+import ConnectWallet from "../components/ConnectWallet";
 import Footer from "../components/template/Footer";
 import Navbar from "../components/template/Navbar";
 import styles from "../styles/Home.module.css";

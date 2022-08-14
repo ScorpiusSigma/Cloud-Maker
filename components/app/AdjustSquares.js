@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AppContext } from "../context/AppContext";
 
 export default function AdjustSquare(props) {
   const {
@@ -13,6 +14,7 @@ export default function AdjustSquare(props) {
     posLeft,
     posRight,
   } = props;
+  const { effect, setEffect } = useContext(AppContext);
 
   const cursorResizeDir = () => {
     if (ew) return "cursor-ew-resize";
@@ -71,26 +73,43 @@ export default function AdjustSquare(props) {
     const editor = document.getElementById("editor");
     const editorWidth = editor.offsetWidth;
     const editorHeight = editor.offsetHeight;
+
     const height =
-      signY * ((e.clientY || e.touches[0].clientY) - midpoint[1]) * 2;
+      signY *
+      ((e.clientY !== undefined ? e.clientY : e.touches[0].clientY) -
+        midpoint[1]) *
+      2;
     const width =
-      signX * ((e.clientX || e.touches[0].clientX) - midpoint[0]) * 2;
+      signX *
+      ((e.clientX !== undefined ? e.clientX : e.touches[0].clientX) -
+        midpoint[0]) *
+      2;
 
     if (nesw || nwse) {
-      frame.style.width = (width > editorWidth ? editorWidth : width) + "px";
-      frame.style.height =
-        (height > editorHeight ? editorHeight : height) + "px";
+      const adjWidth = width > editorWidth ? editorWidth : width;
+      const adjHeight = height > editorHeight ? editorHeight : height;
+      frame.style.width = adjWidth + "px";
+      frame.style.height = adjHeight + "px";
+
+      setEffect({
+        ...effect,
+        width: adjWidth >= 0 ? adjWidth : 0,
+        height: adjHeight >= 0 ? adjHeight : 0,
+      });
       return;
     }
 
     if (ew) {
-      frame.style.width = (width > editorWidth ? editorWidth : width) + "px";
+      const adjWidth = width > editorWidth ? editorWidth : width;
+      frame.style.width = adjWidth + "px";
+      setEffect({ ...effect, width: adjWidth >= 0 ? adjWidth : 0 });
       return;
     }
 
     if (ns) {
-      frame.style.height =
-        (height > editorHeight ? editorHeight : height) + "px";
+      const adjHeight = height > editorHeight ? editorHeight : height;
+      frame.style.height = adjHeight + "px";
+      setEffect({ ...effect, height: adjHeight >= 0 ? adjHeight : 0 });
       return;
     }
   };
