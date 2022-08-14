@@ -54,7 +54,7 @@ export default function Home() {
           <div className="absolute w-full h-full z-10 top-0">
             <span className="absolute text-center top-1/4 w-full">
               <h2 className="uppercase text-7xl">
-                Love managed services? Who doesn't!
+                Love managed services? Who doesn&apos;t!
               </h2>
               <br />
               <p className="text-4xl">
@@ -115,7 +115,7 @@ export default function Home() {
             </h2>
             <p className="text-[#82DDE7] text-5xl leading-relaxed">
               As you pay to use our APIs, a portion goes to the open source
-              software's treasury
+              software&apos;s treasury
             </p>
           </div>
         </section>
