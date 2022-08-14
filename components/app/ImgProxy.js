@@ -32,7 +32,7 @@ export default function ImgProxy() {
         </div>
         <textarea
           readOnly
-          className="w-full h-40 border border-gray-600 rounded-md text-xl bg-transparent resize-none flex p-5"
+          className="w-full min-h-[112px] border border-gray-600 rounded-md text-xl bg-transparent resize-none flex px-5 py-2 items-center"
           value={url}
         />
       </div>
