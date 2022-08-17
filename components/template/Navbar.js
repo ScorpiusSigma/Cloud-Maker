@@ -16,7 +16,7 @@ const Bars = () => {
 
 const Navbar = () => {
   const pages = [
-    { name: "About", href: "/" },
+    { name: "About", href: "https://www.notion.so/pedialab/Hello-from-CloudMakerDAO-bf728bc2c7fe41848aac1b46ac2691de" },
     { name: "Developers", href: "/" },
     { name: "Token", href: "/" },
     { name: "Blog", href: "/" },
